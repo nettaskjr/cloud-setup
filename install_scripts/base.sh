@@ -48,6 +48,6 @@ mv /etc/localtime /etc/localtime.old
 ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 # Instala o script de configuração do bashrc
-INSTALL_BASHRC="${SCRIPT_DIR}/../files/bashrc/install.sh"
+INSTALL_BASHRC="${SCRIPT_DIR}/../files/bashrc/install-bash-settings.sh"
 chmod +x ${INSTALL_BASHRC}
 exec ${INSTALL_BASHRC}
