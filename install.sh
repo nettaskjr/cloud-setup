@@ -24,4 +24,9 @@ curl -L -o ${FILE} ${ASSET_URL}
 tar -zxvf ${FILE}
 cd cloud-setup
 chmod +x *.sh
-sudo ./cloud-setup.sh -b "$*"
+if [ -z "$*" ]; then
+    sudo ./cloud-setup.sh -b #verifica se funcionou... estava com sono
+else
+    sudo ./cloud-setup.sh -b "$*"
+fi
+
