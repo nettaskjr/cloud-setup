@@ -8,8 +8,6 @@
 set -e
 # Trata erros em pipelines.
 set -o pipefail
-# Sai se tentar usar uma variável não definida.
-#set -u
 
 # Instalando dependências necessárias
 export DEBIAN_FRONTEND=noninteractive

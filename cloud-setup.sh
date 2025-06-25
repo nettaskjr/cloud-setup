@@ -8,8 +8,8 @@
 set -e
 # Trata erros em pipelines.
 set -o pipefail
-# Sai se tentar usar uma variável não definida.
-set -u
+# Ativa as opções de padrões estendidos para o shell atual
+#shopt -s extglob
 
 # --- Variáveis Globais ---
 # Diretório onde os scripts de instalação customizados estão localizados.
@@ -82,7 +82,7 @@ base() {
 # Instala um aplicativo.
 # Verifica se existe um script de instalação customizado, senão, usa apt.
 install_app() {
-  local app_name=${1// /} # Remove espaços do nome do aplicativo 
+  local app_name=$(echo -n "$argumento_original" | sed -e 's/^[[:space:]]*//') # Remove espaços a esquerda
   local custom_script_path="${CUSTOM_SCRIPTS_DIR}/${app_name}.sh"
 
   log "Processando a instalação de '${app_name}'..."
