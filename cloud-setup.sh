@@ -82,7 +82,7 @@ base() {
 # Instala um aplicativo.
 # Verifica se existe um script de instalação customizado, senão, usa apt.
 install_app() {
-  local app_name="$1"
+  local app_name=${1// /} # Remove espaços do nome do aplicativo 
   local custom_script_path="${CUSTOM_SCRIPTS_DIR}/${app_name}.sh"
 
   log "Processando a instalação de '${app_name}'..."
