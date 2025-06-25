@@ -16,7 +16,7 @@ jobs:
 
       - name: Create and Populate Release Package
         run: |
-          rsync -a . cloud-setup/ --exclude=.git --exclude=.github --exclude=install.sh
+          rsync -a . cloud-setup/ --exclude=.git --exclude=.github
           tar -czvf cloud-setup_${{ github.ref_name }}.tar.gz cloud-setup/
         # O comando acima cria um arquivo .tar.gz com os scripts.
         # ${{ github.ref_name }} pega o nome da tag (ex: v1.0).

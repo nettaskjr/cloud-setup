@@ -9,10 +9,11 @@ set -e
 # Trata erros em pipelines.
 set -o pipefail
 # Sai se tentar usar uma variável não definida.
-set -u
+#set -u
 
 # Instalando dependências necessárias
 export DEBIAN_FRONTEND=noninteractive
+echo $1
 sudo apt install -y jq
 
 # Pegando a ultima versão do repositório cloud-setup
@@ -23,4 +24,4 @@ curl -L -o ${FILE} ${ASSET_URL}
 tar -zxvf ${FILE}
 cd cloud-setup
 chmod +x *.sh
-sudo ./cloud-setup.sh -b $1
+sudo ./cloud-setup.sh -b "$*"
