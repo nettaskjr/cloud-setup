@@ -22,5 +22,3 @@ curl -L -o ${FILE} ${ASSET_URL}
 tar -zxvf ${FILE}
 cd cloud-setup
 chmod +x *.sh
-
-./cloud-setup.sh ${*}
