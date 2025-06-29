@@ -19,7 +19,7 @@ log "Iniciando a instalação do(a) Github-cli..."
 # Verifica se o xxxx já está instalado.
 if command -v gh &> /dev/null; then
     error "Github-cli já parece estar instalado. Verificando a versão."
-    xxxx --version
+    gh --version
     log "Nenhuma ação necessária."
     exit 0
 fi
