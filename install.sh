@@ -23,5 +23,4 @@ tar -zxvf ${FILE}
 cd cloud-setup
 chmod +x *.sh
 
-
-
+./cloud-setup.sh ${*}
