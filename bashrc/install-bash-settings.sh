@@ -11,9 +11,9 @@ source "${SCRIPT_DIR}/../../lib_utils.sh"
 
 # --- Verificação de Segurança ---
 if [[ "$(id -u)" -ne 0 ]]; then
-  error "Este script precisa ser executado como root. Use 'sudo ./install.sh'"
+    error "Este script precisa ser executado como root. Use 'sudo ./install.sh'"
 
-  exit 0
+    exit 0
 fi
 
 # --- Definição de Arquivos ---

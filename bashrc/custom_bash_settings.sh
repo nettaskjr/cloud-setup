@@ -50,7 +50,7 @@ B="\[\033[0;34m\]" # Blue (Azul)
 M="\[\033[0;35m\]" # Magenta (Vermelho Claro)
 C="\[\033[0;36m\]" # Cyan (Ciano - Azul Claro)
 W="\[\033[0;37m\]" # White (Branco)
- 
+
 ## Efeito Negrito (bold) e cores
 BK="\[\033[1;30m\]" # Bold+Black (Negrito+Preto)
 BR="\[\033[1;31m\]" # Bold+Red (Negrito+Vermelho)
@@ -105,16 +105,16 @@ BGW="\[\033[47m\]" # White (Branco)
 #info=<<TXT>>
 
 if [ $UID -eq "0" ]; then
- 
+
 ## Cores e efeitos do Usuario root
     PS1="
- $BR┌─[\u]$BY@-$info-@$BR[$BW${HOSTNAME%%.*}$BR]$BR[\$(parse_git_branch)]$B:\w\n$BR └─>$BR \\$ $NONE"
- 
+    $BR┌─[\u]$BY@-$info-@$BR[$BW${HOSTNAME%%.*}$BR]$BR[\$(parse_git_branch)]$B:\w\n$BR └─>$BR \\$ $NONE"
+
 else
- 
+
 ## Cores e efeitos do usuário comum
     PS1="
- $BG┌─[$G\u$BG]$BY@-$info-@$BG[$W${HOSTNAME%%.*}$BG][$G\$(parse_git_branch)$BG]$B:\w\n$BG └─> \\$ $NONE"
+    $BG┌─[$G\u$BG]$BY@-$info-@$BG[$W${HOSTNAME%%.*}$BG][$G\$(parse_git_branch)$BG]$B:\w\n$BG └─> \\$ $NONE"
 
 fi
 
