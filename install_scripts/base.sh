@@ -3,10 +3,10 @@
 # install_scripts/base.sh - Instala o base Engine.
 # Este script é chamado por cloud_setup.sh caso informado a opçao -b ou --base.
 
-# Segurança: sair em caso de erro.
+# Sai imediatamente se um comando falhar.
 set -e
+# Trata erros em pipelines.
 set -o pipefail
-set -u
 
 # --- CARREGANDO A BIBLIOTECA COMPARTILHADA ---
 # Encontra o diretório do script atual para poder voltar um nível (../)

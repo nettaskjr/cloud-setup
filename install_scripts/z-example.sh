@@ -3,10 +3,10 @@
 # install_scripts/xxxx.sh - Instala o(a) xxxx.
 # Este script é chamado por cloud_setup.sh se o app 'xxxx' for solicitado.
 
-# Segurança: sair em caso de erro.
+# Sai imediatamente se um comando falhar.
 set -e
+# Trata erros em pipelines.
 set -o pipefail
-set -u
 
 # --- CARREGANDO A BIBLIOTECA COMPARTILHADA ---
 # Encontra o diretório do script atual para poder voltar um nível (../)
@@ -23,3 +23,12 @@ if command -v xxxx &> /dev/null; then
     log "Nenhuma ação necessária."
     exit 0
 fi
+
+
+#<<< script de instalação aqui >>> 
+
+
+log "Verificação da instalação:"
+xxx --version
+
+log "Instalação do Docker concluída."
