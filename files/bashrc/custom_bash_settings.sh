@@ -108,13 +108,13 @@ if [ $UID -eq "0" ]; then
 
 ## Cores e efeitos do Usuario root
     PS1="
-  $BR┌─[\u]$BY@-$info-@$BR[$BW${HOSTNAME%%.*}$BR]$BR[\$(parse_git_branch)]$B:\w\n$BR └─>$BR \\$ $NONE"
+  $BR┌─[\u]$BY@-$info-@$BR[$BW${HOSTNAME%%.*}$BR]$BR[\$(parse_git_branch)]$B:\w\n$BR  └─>$BR \\$ $NONE"
 
 else
 
 ## Cores e efeitos do usuário comum
     PS1="
-  $BG┌─[$G\u$BG]$BY@-$info-@$BG[$W${HOSTNAME%%.*}$BG][$G\$(parse_git_branch)$BG]$B:\w\n$BG └─> \\$ $NONE"
+  $BG┌─[$G\u$BG]$BY@-$info-@$BG[$W${HOSTNAME%%.*}$BG][$G\$(parse_git_branch)$BG]$B:\w\n$BG  └─> \\$ $NONE"
 
 fi
 
