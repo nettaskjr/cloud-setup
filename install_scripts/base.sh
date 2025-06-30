@@ -31,6 +31,7 @@ APPS="${APPS} unzip"            # compactador zip entre outros
 APPS="${APPS} unrar-free"       # compactador RAR
 APPS="${APPS} vim"              # vim melhorado
 APPS="${APPS} wget"             # ferramenta de download
+APPS="${APPS} xauth"            # utilitário de autenticação do X 
 
 apt install ${APPS} -y
 
