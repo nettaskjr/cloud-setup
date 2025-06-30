@@ -16,7 +16,7 @@ source "${SCRIPT_DIR}/../lib_utils.sh"
 
 log "Iniciando a instalação do(a) Github-cli..."
 
-# Verifica se o xxxx já está instalado.
+# Verifica se o Github-cli já está instalado.
 if command -v gh &> /dev/null; then
     error "Github-cli já parece estar instalado. Verificando a versão."
     gh --version
