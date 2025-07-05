@@ -25,7 +25,7 @@ if command -v docker &> /dev/null; then
 fi
 
 # Instala pré-requisitos.
-apt-get install -y ca-certificates curl gnupg
+apt install -y ca-certificates curl gnupg
 
 # Adiciona a chave GPG oficial do Docker.
 install -m 0755 -d /etc/apt/keyrings
@@ -39,12 +39,12 @@ echo \
   tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # Atualiza a lista de pacotes com o novo repositório.
-apt-get update -y
+apt update -y
 
 # Instala a versão mais recente do Docker.
-apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-log "Docker Engine instalado com sucesso."
+success "Docker Engine instalado com sucesso."
 
 # Adiciona os usuários do sistema ao grupo 'docker'.
 log "Adicionando usuários do sistema ao grupo 'docker'..."
@@ -63,7 +63,7 @@ awk -F: '$6 ~ /^\/home\// && $6 != "/home/nologin" { print $1 }' /etc/passwd | w
 
     # Verifica se o comando foi bem-sucedido 
     if [ $? -eq 0 ]; then
-      log ">>> Usuário '$username' adicionado com sucesso."
+      success ">>> Usuário '$username' adicionado com sucesso."
     else
       error "Falha ao adicionar o usuário '$username'."
     fi
@@ -73,4 +73,4 @@ done
 log "Verificação da instalação:"
 docker --version
 
-log "Instalação do Docker concluída."
+success "Instalação do Docker concluída."

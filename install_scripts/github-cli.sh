@@ -14,7 +14,7 @@ set -o pipefail
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 source "${SCRIPT_DIR}/../lib_utils.sh"
 
-log "Iniciando a instalação do(a) Github-cli..."
+log "Iniciando a instalação do Github-cli..."
 
 # Verifica se o Github-cli já está instalado.
 if command -v gh &> /dev/null; then
@@ -41,4 +41,4 @@ fi
 log "Verificação da instalação:"
 gh --version
 
-log "Instalação do Docker concluída."
+success "Instalação do Github-cli concluída."

@@ -13,13 +13,15 @@ set -o pipefail
 # e encontrar a biblioteca de forma confiável.
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 source "${SCRIPT_DIR}/../lib_utils.sh"
+app = "xxxx"  # Substitua 'xxxx' pelo nome do aplicativo que está sendo instalado.
+app-extenso = "xxxx"  # Substitua 'xxxx' pelo nome completo do aplicativo, se necessário.
 
-log "Iniciando a instalação do(a) xxxx..."
+log "Iniciando a instalação do(a) ${app_extenso}"
 
-# Verifica se o xxxx já está instalado.
-if command -v xxxx &> /dev/null; then
-    error "xxxx já parece estar instalado. Verificando a versão."
-    xxxx --version
+# Verifica se o app já está instalado.
+if command -v ${app} &> /dev/null; then
+    error "${app_extenso} parece estar instalado! Verificando a versão."
+    ${app} --version
     log "Nenhuma ação necessária."
     exit 0
 fi
@@ -29,6 +31,6 @@ fi
 
 
 log "Verificação da instalação:"
-xxx --version
+${app} --version
 
-log "Instalação do Docker concluída."
+success "Instalação do ${app_extenso} concluída com sucesso.}."
