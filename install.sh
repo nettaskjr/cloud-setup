@@ -22,3 +22,5 @@ curl -L -o ${FILE} ${ASSET_URL}
 tar -zxvf ${FILE}
 cd cloud-setup
 chmod +x *.sh
+
+# curl -L -o install.sh https://raw.githubusercontent.com/nettaskjr/cloud-setup/refs/heads/main/install.sh && chmod +x install.sh && sudo ./install.sh && sudo cloud-setup/cloud-setup.sh -b
