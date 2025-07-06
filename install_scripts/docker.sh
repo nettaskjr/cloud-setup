@@ -24,8 +24,13 @@ if command -v docker &> /dev/null; then
     exit 0
 fi
 
-# Instala pré-requisitos.
-apt install -y ca-certificates curl gnupg
+# Verifica se as dependências (curl, jq, unzip) estão instaladas, se nao estiver instala
+for cmd in ca-certificates curl gnupg; do
+    if ! command -v "$cmd" &> /dev/null; then
+        log "Instalando a dependência: $cmd"
+        apt install -y "$cmd"
+    fi
+done
 
 # Adiciona a chave GPG oficial do Docker.
 install -m 0755 -d /etc/apt/keyrings
