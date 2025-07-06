@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# install_scripts/xxxx.sh - Instala o(a) xxxx.
-# Este script é chamado por cloud_setup.sh se o app 'xxxx' for solicitado.
+# install_scripts/terraform.sh - Instala o(a) terraform.
+# Este script é chamado por cloud_setup.sh se o app 'terraform' for solicitado.
 
 # Sai imediatamente se um comando falhar.
 set -e
