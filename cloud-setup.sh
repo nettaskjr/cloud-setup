@@ -57,8 +57,10 @@ update_system() {
   apt  update -y
   # A opção --with-new-pkgs lida com novas dependências de forma inteligente.
   apt upgrade -y --with-new-pkgs
+  apt list --upgradable
   apt autoremove -y
   apt clean
+
   success "Atualização do sistema concluída."
 }
 
