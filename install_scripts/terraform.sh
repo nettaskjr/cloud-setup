@@ -68,4 +68,4 @@ log "Instalação do Terraform v${TERRAFORM_VERSION} concluída com sucesso!"
 log "Verificação da instalação:"
 ${app} --version
 
-success "Instalação do ${app_extenso} concluída com sucesso.}."
+success "Instalação do ${app_extenso} concluída com sucesso."
