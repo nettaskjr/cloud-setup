@@ -188,6 +188,10 @@ main() {
   fi
 
   success "Script concluído com sucesso!"
+
+  # reinicia o sistema para aplicar todas as atualizações e mudanças.
+  log "Reiniciando o sistema para aplicar as atualizações..."
+  sudo reboot
 }
 
 # --- Ponto de Entrada ---
