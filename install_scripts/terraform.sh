@@ -13,7 +13,7 @@ set -o pipefail
 # e encontrar a biblioteca de forma confiável.
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 source "${SCRIPT_DIR}/../lib_utils.sh"
-app="terraform"  # Substitua 'xxxx' pelo nome do aplicativo que está sendo instalado.
+app="terraform"  # Substitua 'xxxx' pelo nome do aplicativo que está sendo instalado. 
 app_extenso="$app" # Substitua ${app} pelo nome completo do aplicativo, se necessário.
 
 log "Iniciando a instalação do(a) ${app_extenso}"

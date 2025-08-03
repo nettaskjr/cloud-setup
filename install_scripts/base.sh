@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+ #!/usr/bin/env bash
 
 # install_scripts/base.sh - Instala o base Engine.
 # Este script é chamado por cloud_setup.sh caso informado a opçao -b ou --base.

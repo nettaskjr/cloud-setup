@@ -132,7 +132,7 @@ main() {
       -u | --update-all)
         do_update=true
         shift
-        ;;
+        ;; 
       -h | --help)
         show_help
         exit 0
