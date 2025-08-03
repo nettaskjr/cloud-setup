@@ -13,10 +13,15 @@ set -o pipefail
 # e encontrar a biblioteca de forma confiável.
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 source "${SCRIPT_DIR}/../lib_utils.sh"
-app = "ssl"  # Substitua 'xxxx' pelo nome do aplicativo que está sendo instalado.
+app="ssl"  # Substitua 'xxxx' pelo nome do aplicativo que está sendo instalado.
 app_extenso="$app" # Substitua ${app} pelo nome completo do aplicativo, se necessário.
 
 log "Iniciando a instalação do(a) ${app_extenso}"
+
+# instalando as dependências necessárias
+INSTALL_DOCKER="${SCRIPT_DIR}/../install_scripts/docker.sh"
+chmod +x ${INSTALL_DOCKER}
+exec ${INSTALL_DOCKER}
 
 # Verifica se o app já está instalado.
 # validar como será feito o teste de instalação

@@ -24,7 +24,30 @@ if command -v docker &> /dev/null; then
     exit 0
 fi
 
-apt install docker.io docker-compose -y
+# Verifica se as dependências (curl, jq, unzip) estão instaladas, se nao estiver instala
+for cmd in ca-certificates curl gnupg; do
+    if ! command -v "$cmd" &> /dev/null; then
+        log "Instalando a dependência: $cmd"
+        apt install -y "$cmd"
+    fi
+done
+
+# Adiciona a chave GPG oficial do Docker.
+install -m 0755 -d --preserve-context /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Adiciona o repositório do Docker ao Apt.
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Atualiza a lista de pacotes com o novo repositório.
+apt update -y
+
+# Instala a versão mais recente do Docker.
+apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 success "Docker Engine instalado com sucesso."
 
