@@ -108,6 +108,7 @@ main() {
   local do_base=false
   local do_update=false
   local apps_to_install=()
+  local action_taken=false
 
   # Define as opções curtas e longas.
   local options
@@ -148,15 +149,18 @@ main() {
   done
 
   # Verifica se alguma ação *real* foi solicitada.
-  if ${do_update} && ${do_base} && [[ ${#apps_to_install[@]} -eq 0 ]]; then
-    log "Nenhuma ação solicitada. Use -u para atualizar ou -a para instalar. Use -h para ajuda."
+  if ! ${do_update} && ! ${do_base} && [[ ${#apps_to_install[@]} -eq 0 ]]; then
+    log "Nenhuma ação solicitada. Use -u, -b ou -a. Use -h para ajuda."
     exit 0
   fi
 
   # --- PONTO DE VERIFICAÇÃO DE ROOT ---
-  if [[ "$(id -u)" -ne 0 ]]; then
+  # Se alguma opção que requer root for usada, verifica se o usuário é root.
+  if ${do_update} || ${do_base} || [[ ${#apps_to_install[@]} -gt 0 ]]; then
+    if [[ "$(id -u)" -ne 0 ]]; then
     error "As opções --update-all, --app e --base requerem privilégios de root. Use 'sudo'."
-    exit 0
+      exit 1
+    fi
   fi
 
   # --- Execução das Tarefas ---
@@ -164,20 +168,20 @@ main() {
   # 1. Atualizar o sistema, se solicitado.
   if ${do_update}; then
     update_system
+    action_taken=true
   fi
 
   # 2. Instalar a base do sistema, se solicitado.
   if ${do_base}; then
     # Garante que o update foi executado mesmo que o usuário não tenha solicitado.
     update_system
-    
     base
+    action_taken=true
   fi
 
   # 3. Instalar os aplicativos solicitados.
   if [[ ${#apps_to_install[@]} -gt 0 ]]; then
     log "Iniciando a instalação de ${#apps_to_install[@]} aplicativo(s)..."
-  
     # Garante que o update foi executado mesmo que o usuário não tenha solicitado.
     update_system
 
@@ -185,13 +189,21 @@ main() {
       install_app "${app}"
     done
     success "Todos os aplicativos solicitados foram processados."
+    action_taken=true
   fi
 
   success "Script concluído com sucesso!"
 
-  # reinicia o sistema para aplicar todas as atualizações e mudanças.
-  log "Reiniciando o sistema para aplicar as atualizações..."
-  sudo reboot
+  # Se alguma ação que pode exigir reinicialização foi executada, pergunta ao usuário.
+  if ${action_taken}; then
+    read -r -p "O sistema precisar ser reiniciado para aplicar todas as mudanças. Deseja reiniciar agora? (s/N) " response
+    if [[ "$response" =~ ^([sS][yY])$ ]]; then
+      log "Reiniciando o sistema..."
+      reboot
+    else
+      log "Reinicialização cancelada. É recomendado reiniciar o sistema manualmente mais tarde."
+    fi
+  fi
 }
 
 # --- Ponto de Entrada ---
