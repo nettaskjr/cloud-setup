@@ -24,7 +24,7 @@ APPS="${APPS} gnupg"            # usado para comunicação e armazenamento segur
 APPS="${APPS} htop"             # um top metido a besta
 APPS="${APPS} locate"           # localização de arquivos
 APPS="${APPS} lsb-release"      # identifica a distribuição Linux (/etc/os-release)
-#APPS="${APPS} neofetch"         # fetch de inicialização da distro (embelezamento)
+APPS="${APPS} fastfetch"        # fetch de inicialização da distro (embelezamento)
 APPS="${APPS} stress"           # script de teste de stress para o servidor
 APPS="${APPS} tzdata"           # configuração de timezone
 APPS="${APPS} unzip"            # compactador zip entre outros
@@ -41,7 +41,7 @@ log "Atualiza o banco de dados do locate"
 
 # Inclui o neofetch na inicialização do sistema
 log "Cria um arquivo de perfil para exibir o neofetch na inicialização"
-echo 'neofetch' > /etc/profile.d/mymotd.sh && sudo chmod +x /etc/profile.d/mymotd.sh
+echo 'fastfetch' > /etc/profile.d/mymotd.sh && sudo chmod +x /etc/profile.d/mymotd.sh
 
 # Atualiza o timezone do sistema
 log "Atualiza o timezone do sistema para America/Sao_Paulo"
