@@ -39,8 +39,8 @@ apt install ${APPS} -y
 log "Atualiza o banco de dados do locate"
 # updatedb  # não é recomendado usar com wsl, pois irá indexar todo o sistema de arquivos do computador hospedeiro
 
-# Inclui o neofetch na inicialização do sistema
-log "Cria um arquivo de perfil para exibir o neofetch na inicialização"
+# Inclui o fastfetch na inicialização do sistema
+log "Cria um arquivo de perfil para exibir o fasttech na inicialização"
 echo 'fastfetch' > /etc/profile.d/mymotd.sh && sudo chmod +x /etc/profile.d/mymotd.sh
 
 # Atualiza o timezone do sistema
