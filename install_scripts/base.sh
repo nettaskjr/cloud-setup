@@ -17,6 +17,10 @@ source "${SCRIPT_DIR}/../lib_utils.sh"
 # Instala os arquivos base do sistema
 log "Iniciando a instalação dos apps base..."
 
+# repositorio para fastfetch
+log "Adicionando repositório PPA para fastfetch"
+add-apt-repository ppa:zhangsongcui3371/fastfetch -y && apt update -y 
+
 APPS="ca-certificates"          # autoridades certificadoras para autenticação SSL
 APPS="${APPS} curl"             # cliente URL
 APPS="${APPS} dirmngr"          # necessário para importar chave de assinatura do repositório
