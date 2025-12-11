@@ -194,15 +194,10 @@ main() {
 
   success "Script concluído com sucesso!"
 
-  # Se alguma ação que pode exigir reinicialização foi executada, pergunta ao usuário.
+  #reinicia o shell se alguma ação foi tomada
   if ${action_taken}; then
-    read -r -p "O sistema precisar ser reiniciado para aplicar todas as mudanças. Deseja reiniciar agora? (s/N) " response
-    if [[ "$response" =~ ^([sS][yY])$ ]]; then
-      log "Reiniciando o sistema..."
-      reboot
-    else
-      log "Reinicialização cancelada. É recomendado reiniciar o sistema manualmente mais tarde."
-    fi
+    log "Reiniciando o shell para aplicar as mudanças..."
+    exec "$SHELL" -l
   fi
 }
 
