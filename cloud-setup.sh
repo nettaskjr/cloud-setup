@@ -196,8 +196,8 @@ main() {
 
   #reinicia o shell se alguma ação foi tomada
   if ${action_taken}; then
-    log "Reiniciando o shell para aplicar as mudanças..."
-    exec "$SHELL" -l
+    log "Reiniciando o servidor para aplicar as mudanças..."
+    reboot
   fi
 }
 
