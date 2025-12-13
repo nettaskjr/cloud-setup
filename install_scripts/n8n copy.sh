@@ -73,24 +73,6 @@ systemctl --no-pager status n8n.service || true
 
 cat <<EOF
 
-Observações e próximos passos:
-- A instalação padrão expõe n8n na porta 5678. Proteja com firewall/ingress ou configure proxy reverso (nginx/traefik).
-- Para ativar autenticação básica (recomendado), crie um arquivo drop-in:
-  mkdir -p /etc/systemd/system/n8n.service.d
-  cat > /etc/systemd/system/n8n.service.d/override.conf <<'CONF'
-  [Service]
-  Environment="N8N_BASIC_AUTH_ACTIVE=true"
-  Environment="N8N_BASIC_AUTH_USER=seu_usuario"
-  Environment="N8N_BASIC_AUTH_PASSWORD=sua_senha_segura"
-  CONF
-  systemctl daemon-reload
-  systemctl restart n8n.service
-
-- Para usar banco de dados externo (Postgres) ou outras variáveis, exporte as variáveis N8N_* para o serviço via drop-in.
-- Logs: `journalctl -u n8n.service -f`
-
-EOF
-
 # Configuração do Nginx como Proxy Reverso para o n8n
 # Cria o arquivo de configuração do site em /etc/nginx/sites-available/n8n
 cat <<EOF > /etc/nginx/sites-available/n8n
@@ -120,3 +102,21 @@ rm -f /etc/nginx/sites-enabled/default
 
 # Recarrega o Nginx para aplicar as mudanças
 systemctl reload nginx
+
+Observações e próximos passos:
+- A instalação padrão expõe n8n na porta 5678. Proteja com firewall/ingress ou configure proxy reverso (nginx/traefik).
+- Para ativar autenticação básica (recomendado), crie um arquivo drop-in:
+  mkdir -p /etc/systemd/system/n8n.service.d
+  cat > /etc/systemd/system/n8n.service.d/override.conf <<'CONF'
+  [Service]
+  Environment="N8N_BASIC_AUTH_ACTIVE=true"
+  Environment="N8N_BASIC_AUTH_USER=seu_usuario"
+  Environment="N8N_BASIC_AUTH_PASSWORD=sua_senha_segura"
+  CONF
+  systemctl daemon-reload
+  systemctl restart n8n.service
+
+- Para usar banco de dados externo (Postgres) ou outras variáveis, exporte as variáveis N8N_* para o serviço via drop-in.
+- Logs: `journalctl -u n8n.service -f`
+
+EOF
